@@ -1,0 +1,35 @@
+-- product --
+
+id - objectId
+name - Strinng
+brand - String
+
+
+
+category (Men, woman, shoes, etc.) - String 
+
+Sales - object
+ - price - double
+ - discount - double 
+ - status (sale or not) - boolean
+
+-- details --
+
+id - product objectId
+
+colors - object{
+object {
+id: objectId of productID
+color1: url to color1
+
+}
+color2: url to color2
+color3: url to color3
+}
+
+sizes - object
+ - XS, S, M, L, XL, ETC, 38, 39, 40, etc.
+Reviews - object
+ - Stars 1-5 / Rating - Double
+ - Comments - String
+
