@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends MongoRepository<Product, String> {
-
+    List<Product> findByCategory(String category);
 }
