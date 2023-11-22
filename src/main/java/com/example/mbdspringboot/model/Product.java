@@ -28,13 +28,16 @@ public class Product {
     @Field(targetType = FieldType.OBJECT_ID )
     private String reviews;
     private String image;
+    private String slug;
+
 
     @Field("value") // Map to the "sales" field in the document
     private Value value; // Object
+    @Field("bulletedList")
+    private BulletedList bulletedList;
     private Category category;
 
-
-    public Product(String id, String name, String brand, String description, Integer totalRating, String reviews, String image, Value value, Category category) {
+    public Product(String id, String name, String brand, String description, Integer totalRating, String reviews, String image, String slug, Value value, BulletedList bulletedList, Category category) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -42,20 +45,14 @@ public class Product {
         this.totalRating = totalRating;
         this.reviews = reviews;
         this.image = image;
+        this.slug = slug;
         this.value = value;
+        this.bulletedList = bulletedList;
         this.category = category;
     }
 
     public String getId() {
         return id;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public void setId(String id) {
@@ -102,12 +99,36 @@ public class Product {
         this.reviews = reviews;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+
     public Value getValue() {
         return value;
     }
 
     public void setValue(Value value) {
         this.value = value;
+    }
+
+    public BulletedList getBulletedList() {
+        return bulletedList;
+    }
+
+    public void setBulletedList(BulletedList bulletedList) {
+        this.bulletedList = bulletedList;
     }
 
     public Category getCategory() {
@@ -153,4 +174,42 @@ public class Product {
             this.status = status;
         }
     }
+
+    public static class BulletedList {
+        private String list1;
+        private String list2;
+        private String list3;
+
+        public BulletedList(String list1, String list2, String list3) {
+            this.list1 = list1;
+            this.list2 = list2;
+            this.list3 = list3;
+        }
+
+        public String getList1() {
+            return list1;
+        }
+
+        public void setList1(String list1) {
+            this.list1 = list1;
+        }
+
+        public String getList2() {
+            return list2;
+        }
+
+        public void setList2(String list2) {
+            this.list2 = list2;
+        }
+
+        public String getList3() {
+            return list3;
+        }
+
+        public void setList3(String list3) {
+            this.list3 = list3;
+        }
+    }
+
 }
+
