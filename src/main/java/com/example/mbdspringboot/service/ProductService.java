@@ -2,12 +2,10 @@ package com.example.mbdspringboot.service;
 
 import com.example.mbdspringboot.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.example.mbdspringboot.repository.ProductRepository;
-import java.text.Normalizer;
-import java.util.regex.Pattern;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -34,6 +32,28 @@ public class ProductService {
 
     public Product getProductBySlug(String slug) {
         return productRepository.findBySlug(slug);
+    }
+
+    public List<Product> searchByCategoryAndFilter(String category, String filterType) {
+        List<Product> products;
+
+        switch (filterType) {
+            case "rating": // highest rating
+                products = productRepository.findByCategoryAndTotalRatingGreaterThan(category, 0, Sort.by(Sort.Direction.DESC, "totalRating"));
+                return products;
+            case "highest": // highest price
+                products = productRepository.findByCategoryOrderByValuePriceDesc(category);
+                return products;
+            case "lowest": // lowest price
+                products = productRepository.findByCategoryOrderByValuePriceAsc(category);
+                return products;
+            default:
+                //products = productRepository.findByCategory(category);
+                //return products;
+        } // Need to add most reviews case aswell
+
+       // return products;
+        return null;
     }
 
 }

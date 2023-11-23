@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(exposedHeaders = {"Access-Control-Allow-Origin","Access-Control-Allow-Credentials"})
+
+@CrossOrigin(exposedHeaders = {"Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"})
 @RestController
 @RequestMapping("/api")
 public class ProductController {
@@ -19,20 +20,19 @@ public class ProductController {
     ProductService productService;
 
     @Autowired
-    public ProductController(ProductService productService){
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
 
-
     @GetMapping("/test")
-    public String hej(){
+    public String hej() {
         System.out.println("hej");
         return null;
     }
 
     @GetMapping("/products/all")
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts() {
         System.out.println("hej");
         return productService.findAll();
     }
@@ -52,6 +52,7 @@ public class ProductController {
 
         return new ResponseEntity<>("Product added successfully", HttpStatus.CREATED);
     }
+
     private String generateSlug(String productName) {
         return productName.toLowerCase().replaceAll("[^a-z0-9\\s-]", "")
                 .replaceAll("\\s+", "-").replaceAll("-+", "-");
@@ -64,5 +65,13 @@ public class ProductController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(product);
+    }
+
+    @GetMapping("/products/search")
+    public List<Product> searchProductsByCategoryAndFilter(
+            @RequestParam String category,
+            @RequestParam String filterType
+    ) {
+        return productService.searchByCategoryAndFilter(category, filterType);
     }
 }
