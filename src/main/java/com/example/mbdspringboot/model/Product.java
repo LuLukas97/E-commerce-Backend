@@ -25,9 +25,7 @@ public class Product {
     private String brand;
     private String description;
     private Integer totalRating;
-    @Field(targetType = FieldType.OBJECT_ID )
-    private String reviews;
-    private String image;
+
     private String slug;
 
 
@@ -37,18 +35,21 @@ public class Product {
     private BulletedList bulletedList;
     private Category category;
 
-    public Product(String id, String name, String brand, String description, Integer totalRating, String reviews, String image, String slug, Value value, BulletedList bulletedList, Category category) {
+    @Field("images")
+    private Images images;
+
+
+    public Product(String id, String name, String brand, String description, Integer totalRating, String slug, Value value, BulletedList bulletedList, Category category, Images images) {
         this.id = id;
         this.name = name;
         this.brand = brand;
         this.description = description;
         this.totalRating = totalRating;
-        this.reviews = reviews;
-        this.image = image;
         this.slug = slug;
         this.value = value;
         this.bulletedList = bulletedList;
         this.category = category;
+        this.images = images;
     }
 
     public String getId() {
@@ -91,21 +92,6 @@ public class Product {
         this.totalRating = totalRating;
     }
 
-    public String getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(String reviews) {
-        this.reviews = reviews;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 
     public String getSlug() {
         return slug;
@@ -137,6 +123,14 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Images getImages() {
+        return images;
+    }
+
+    public void setImages(Images images) {
+        this.images = images;
     }
 
     public static class Value {
@@ -208,6 +202,51 @@ public class Product {
 
         public void setList3(String list3) {
             this.list3 = list3;
+        }
+    }
+    public static class Images {
+        private String img1;
+        private String img2;
+        private String img3;
+        private String img4;
+
+        public Images(String img1, String img2, String img3, String img4) {
+            this.img1 = img1;
+            this.img2 = img2;
+            this.img3 = img3;
+            this.img4 = img4;
+        }
+
+        public String getImg1() {
+            return img1;
+        }
+
+        public void setImg1(String img1) {
+            this.img1 = img1;
+        }
+
+        public String getImg2() {
+            return img2;
+        }
+
+        public void setImg2(String img2) {
+            this.img2 = img2;
+        }
+
+        public String getImg3() {
+            return img3;
+        }
+
+        public void setImg3(String img3) {
+            this.img3 = img3;
+        }
+
+        public String getImg4() {
+            return img4;
+        }
+
+        public void setImg4(String img4) {
+            this.img4 = img4;
         }
     }
 
