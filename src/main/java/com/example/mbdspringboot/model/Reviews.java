@@ -18,14 +18,18 @@ public class Reviews {
     private Date date;
     @Field(targetType = FieldType.OBJECT_ID)
     private String product;
+    private String pros;
+    private String cons;
 
-    public Reviews(String id, String name, String comment, Integer rating, Date date, String product) {
+    public Reviews(String id, String name, String comment, Integer rating, Date date, String product, String pros, String cons) {
         this.id = id;
         this.name = name;
         this.comment = comment;
         this.rating = rating;
         this.date = date;
         this.product = product;
+        this.pros = pros;
+        this.cons = cons;
     }
 
     public String getId() {
@@ -75,4 +79,21 @@ public class Reviews {
     public void setProduct(String product) {
         this.product = product;
     }
+
+    public String getPros() {
+        return pros;
+    }
+
+    public void setPros(String pros) {
+        this.pros = pros;
+    }
+
+    public String getCons() {
+        return cons;
+    }
+
+    public void setCons(String cons) {
+        this.cons = cons;
+    }
 }
+
