@@ -19,7 +19,7 @@ public class Reviews {
     @Field(targetType = FieldType.OBJECT_ID)
     private String product;
     private String pros;
-    private String cons;
+    private String cons; //
 
     public Reviews(String id, String name, String comment, Integer rating, Date date, String product, String pros, String cons) {
         this.id = id;
