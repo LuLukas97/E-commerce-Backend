@@ -134,29 +134,30 @@ public class Product {
     }
 
     public static class Value {
-        private double price;
-        private double discount;
+        @Field("price")
+        private String price;
+        private String discount;
         private boolean status;
 
-        public Value(double price, double discount, boolean status) {
+        public Value(String price, String discount, boolean status) {
             this.price = price;
             this.discount = discount;
             this.status = status;
         }
 
-        public double getPrice() {
+        public String getPrice() {
             return price;
         }
 
-        public void setPrice(double price) {
+        public void setPrice(String price) {
             this.price = price;
         }
 
-        public double getDiscount() {
+        public String getDiscount() {
             return discount;
         }
 
-        public void setDiscount(double discount) {
+        public void setDiscount(String discount) {
             this.discount = discount;
         }
 
