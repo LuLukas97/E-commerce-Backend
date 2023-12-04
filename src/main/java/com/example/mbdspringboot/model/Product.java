@@ -37,9 +37,9 @@ public class Product {
 
     @Field("images")
     private Images images;
+    private Integer quantity;
 
-
-    public Product(String id, String name, String brand, String description, Integer totalRating, String slug, Value value, BulletedList bulletedList, Category category, Images images) {
+    public Product(String id, String name, String brand, String description, Integer totalRating, String slug, Value value, BulletedList bulletedList, Category category, Images images, Integer quantity) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -50,6 +50,7 @@ public class Product {
         this.bulletedList = bulletedList;
         this.category = category;
         this.images = images;
+        this.quantity = quantity;
     }
 
     public String getId() {
@@ -92,7 +93,6 @@ public class Product {
         this.totalRating = totalRating;
     }
 
-
     public String getSlug() {
         return slug;
     }
@@ -131,6 +131,14 @@ public class Product {
 
     public void setImages(Images images) {
         this.images = images;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public static class Value {
